@@ -113,6 +113,8 @@ abstract class AbstractController extends ActionController
 
         $iteration = 0;
         foreach ((array)$arguments['field'] as $marker => $value) {
+            // cast marker to string to work around PHP associative array implementation
+            $marker = (string) $marker;
             // ignore internal fields (honeypod)
             if (substr($marker, 0, 2) === '__') {
                 continue;
